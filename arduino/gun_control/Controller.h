@@ -2,18 +2,18 @@
 #define CONTROLLER_H
 class Controller{
 public:
-	static const int YAWN_SPEED = 400;
-	static const int YAWN_ACCELERATION = 100;
-	static const int YAWN_MAX_SPEED = 1000;
-	static const int PITCH_SPEED = YAWN_SPEED;
-	static const int PITCH_ACCELERATION = YAWN_ACCELERATION;
-	static const int PITCH_MAX_SPEED = YAWN_MAX_SPEED;
+	static const int YAW_SPEED = 400;
+	static const int YAW_ACCELERATION = 100;
+	static const int YAW_MAX_SPEED = 1000;
+	static const int PITCH_SPEED = YAW_SPEED;
+	static const int PITCH_ACCELERATION = YAW_ACCELERATION;
+	static const int PITCH_MAX_SPEED = YAW_MAX_SPEED;
 private:
 	// The association between the pins on the Arduino and on the Stepper driver
-	static const int YAWN_IN1 = 3;
-	static const int YAWN_IN2 = 4;
-	static const int YAWN_IN3 = 5;
-	static const int YAWN_IN4 = 6;
+	static const int YAW_IN1 = 3;
+	static const int YAW_IN2 = 4;
+	static const int YAW_IN3 = 5;
+	static const int YAW_IN4 = 6;
 
 	static const int PITCH_IN1 = 7;
 	static const int PITCH_IN2 = 8;
@@ -21,19 +21,19 @@ private:
 	static const int PITCH_IN4 = 10;
 
 	// Physical steppers
-	AccelStepper yawn_stepper;
+	AccelStepper yaw_stepper;
 	AccelStepper pitch_stepper;
 
 	// Private methods
-	void yawn(int);
+	void yaw(int);
 	void pitch(int);
 public:
 	Controller();
-	// One of these calls yawn(-n) and one calls yawn(n)
-	void yawnLeft(int);
-	void yawnRight(int);
+	// One of these calls yaw(-n) and one calls yaw(n)
+	void yawLeft(int);
+	void yawRight(int);
 	// Move to a particular spot
-	void yawnTo(int);
+	void yawTo(int);
 
 	// Pitch counterparts
 	void pitchUp(int);

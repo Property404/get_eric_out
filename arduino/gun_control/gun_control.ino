@@ -11,6 +11,6 @@ void setup()
 }
 
 void loop() {
-  controller.yawnTo(20000);
-  controller.yawnTo(-20000);
+  controller.yawTo(20000);
+  controller.yawTo(-20000);
 }

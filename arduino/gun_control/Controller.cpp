@@ -4,10 +4,10 @@
 Controller::Controller()
 {
 	const int HALFSTEP = 8;
-	yawn_stepper = AccelStepper(HALFSTEP, YAWN_IN1, YAWN_IN3, YAWN_IN2, YAWN_IN4);
-	yawn_stepper.setMaxSpeed(YAWN_MAX_SPEED);
-	yawn_stepper.setAcceleration(YAWN_ACCELERATION);
-	yawn_stepper.setSpeed(YAWN_SPEED);
+	yaw_stepper = AccelStepper(HALFSTEP, YAW_IN1, YAW_IN3, YAW_IN2, YAW_IN4);
+	yaw_stepper.setMaxSpeed(YAW_MAX_SPEED);
+	yaw_stepper.setAcceleration(YAW_ACCELERATION);
+	yaw_stepper.setSpeed(YAW_SPEED);
 }
 
 static void move(AccelStepper* s, int b)
@@ -24,24 +24,24 @@ static void moveTo(AccelStepper* s, int b)
 }
 
 
-void Controller::yawn(int b)
+void Controller::yaw(int b)
 {
-	move(&yawn_stepper, b);
+	move(&yaw_stepper, b);
 }
 
-void Controller::yawnRight(int b)
+void Controller::yawRight(int b)
 {
-	yawn(b);
+	yaw(b);
 }
 
-void Controller::yawnLeft(int b)
+void Controller::yawLeft(int b)
 {
-	yawnRight(-b);
+	yawRight(-b);
 }
 
-void Controller::yawnTo(int b)
+void Controller::yawTo(int b)
 {
-	moveTo(&yawn_stepper, b);
+	moveTo(&yaw_stepper, b);
 }
 
 void Controller::pitch(int b)
