@@ -1,0 +1,51 @@
+#include "Parser.h"
+Parser::Parser()
+{
+	number_of_commands = 0;
+}
+
+
+void addCommand(int id, char* string, int int_size)
+{
+	if(id == 0 || int_size > 4 || number_of_commands == MAX_NUMBER_OF_COMMANDS)
+	{
+		Serial.print("Fuck - addCommand failed because you made stupid arguments");
+		return;
+	}
+
+	commands[number_of_commands].id = id;
+	int i;
+	for(i=0;string[i] != '\0';i++)
+	{
+		commands[number_of_commands].string[i] = string[i];
+	}
+	commands[number_of_commands].string[i] = '\0';
+	commands[number_of_commands].int_size = int_size;
+
+	number_of_commands++;
+}
+
+int string_length(char* str)
+{
+	int i=0;
+	while(str[i]!='\0'){i++;};
+	return i;
+}
+
+int parse(int* value)
+{
+	*value = 0;
+	for(int i=0; i < number_of_commands; i++)
+	{
+		if(Serial.available() >= string_length(commands[i])+int_size)
+		{
+			bool passing = true;
+			for(int j=0; j<string_length(commands[i]); j++)
+			{
+				if(Serial.read() != 
+			}
+		}
+	}
+
+	return 0;
+}

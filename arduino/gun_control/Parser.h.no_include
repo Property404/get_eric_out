@@ -1,0 +1,26 @@
+class Parser
+{
+	static const int MAX_COMMAND_STRING_SIZE = 100;
+	static const int MAX_NUMBER_OF_COMMANDS = 16;
+	struct Command
+	{
+		int id;
+		char string[MAX_COMMAND_STRING_SIZE]
+		int int_size;
+	}
+
+	Command commands[MAX_NUMBER_OF_COMMANDS];
+	int number_of_commands;//initialize to zero, please
+
+public:
+	Paser();
+	
+	// Constraints: id can't be zero, string can't be over
+	// MAX_COMMAND_STRING_SIZE, can't add more commands than
+	// MAX_NUMBER_OF_COMMANDS. Int size is max 4
+	void addCommand(int id, char* string, int int_size);
+
+	// Returns 0 or ID
+	int parse(int* value);
+	
+}

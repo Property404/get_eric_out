@@ -13,6 +13,10 @@ Controller::Controller()
 static void move(AccelStepper* s, int b)
 {
 	s->move(b);
+	while(s->distanceToGo() != 0)
+	{
+		s->run();
+	}
 }
 static void moveTo(AccelStepper* s, int b)
 {
@@ -31,7 +35,7 @@ void Controller::yaw(int b)
 
 void Controller::yawRight(int b)
 {
-	yaw(b);
+	yaw(-b);
 }
 
 void Controller::yawLeft(int b)

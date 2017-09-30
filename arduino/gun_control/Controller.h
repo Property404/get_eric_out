@@ -3,7 +3,7 @@
 class Controller{
 public:
 	static const int YAW_SPEED = 400;
-	static const int YAW_ACCELERATION = 100;
+	static const int YAW_ACCELERATION = 1000;
 	static const int YAW_MAX_SPEED = 1000;
 	static const int PITCH_SPEED = YAW_SPEED;
 	static const int PITCH_ACCELERATION = YAW_ACCELERATION;
