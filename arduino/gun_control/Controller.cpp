@@ -10,9 +10,23 @@ Controller::Controller()
 	yawn_stepper.setSpeed(YAWN_SPEED);
 }
 
+static void move(AccelStepper* s, int b)
+{
+	s->move(b);
+}
+static void moveTo(AccelStepper* s, int b)
+{
+	s->moveTo(b);
+	while(s->distanceToGo() != 0)
+	{
+		s->run();
+	}
+}
+
+
 void Controller::yawn(int b)
 {
-	yawn_stepper.move(b);
+	move(&yawn_stepper, b);
 }
 
 void Controller::yawnRight(int b)
@@ -27,9 +41,25 @@ void Controller::yawnLeft(int b)
 
 void Controller::yawnTo(int b)
 {
-	yawn_stepper.moveTo(b);
-	while(yawn_stepper.distanceToGo() != 0)
-	{
-		yawn_stepper.run();
-	}
+	moveTo(&yawn_stepper, b);
+}
+
+void Controller::pitch(int b)
+{
+	move(&pitch_stepper, b);
+}
+
+void Controller::pitchUp(int b)
+{
+	pitch(b);
+}
+
+void Controller::pitchDown(int b)
+{
+	pitchUp(-b);
+}
+
+void Controller::pitchTo(int b)
+{
+	moveTo(&pitch_stepper, b);
 }
