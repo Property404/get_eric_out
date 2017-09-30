@@ -40,6 +40,7 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 	cv2.circle(frame, (center_x, center_y), 10, (0, 0, 255), 2)
 	print([center_x, center_y])
+	break
 
     if anterior != len(faces):
         anterior = len(faces)
