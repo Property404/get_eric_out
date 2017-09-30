@@ -5,16 +5,17 @@ import logging as log
 import datetime as dt
 from time import sleep
 
+# Basic setup
 cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 log.basicConfig(filename='geo.log',level=log.INFO)
 
-plog.plog("Starting video capture")
+log.info("Starting video capture")
 video_capture = cv2.VideoCapture(0)
 anterior = 0
 while True:
     if not video_capture.isOpened():
-        plog.plog('Unable to load camera.')
+        log.info('Unable to load camera.')
         sleep(5)
         pass
 
@@ -31,9 +32,14 @@ while True:
     )
 
     # Draw a rectangle around the faces
-    print(len(faces))
     for (x, y, w, h) in faces:
+	center_x = (2*x+w)/2
+	center_y = (2*y+h)/2
+	width = w
+	height = h
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+	cv2.circle(frame, (center_x, center_y), 10, (0, 0, 255), 2)
+	print([center_x, center_y])
 
     if anterior != len(faces):
         anterior = len(faces)
@@ -41,14 +47,14 @@ while True:
 
 
     # Display the resulting frame
-    #cv2.imshow('Video', frame)
+    cv2.imshow('Video', frame)
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
     # Display the resulting frame
-    #cv2.imshow('Video', frame)
+    cv2.imshow('Video', frame)
 
 # When everything is done, release the capture
 video_capture.release()
