@@ -5,7 +5,8 @@ import logging as log
 import datetime as dt
 from time import sleep
 import serial
-ser = serial.Serial("/dev/cu.usbmodemFA141");
+from hw_if import*
+from web_if import*
 
 # Basic setup
 cascPath = "haarcascade_frontalface_default.xml"
@@ -46,7 +47,7 @@ while True:
 			print("Please turn camera right");
 		elif center_x < 250:
 			print("Please turn camera left");
-		ser.write(b'yl\x00\x10')
+		yawnLeft(10)
 
 		if anterior != len(faces):
 			anterior = len(faces)

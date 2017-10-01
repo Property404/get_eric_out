@@ -14,3 +14,10 @@ def yawnRight(value):
 def yawnLeft(value):
 	_ser.write(_make_command("yl", value));
 
+def pitchTo(value):
+	_ser.write(_make_command("pt", value));
+
+def pitchUp(value):
+	_ser.write(_make_command("pu", value));
+def pitchDown(value):
+	_ser.write(_make_command("pd", value));

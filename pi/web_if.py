@@ -27,4 +27,6 @@ def sendImage(path):
 
 if __name__ == "__main__":
 	#test
-	sendImage("/Users/dagan/Downloads/guy.jpg")
+	sendImage("/Users/dagan/Desktop/comics/up_here.png")
+	sendImage("/Users/dagan/Desktop/comics/romance.jpg")
+	sendImage("/Users/dagan/Desktop/comics/doctor_visit.png")
