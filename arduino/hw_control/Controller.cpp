@@ -8,6 +8,14 @@ Controller::Controller()
 	yaw_stepper.setMaxSpeed(YAW_MAX_SPEED);
 	yaw_stepper.setAcceleration(YAW_ACCELERATION);
 	yaw_stepper.setSpeed(YAW_SPEED);
+
+	pitch_stepper = AccelStepper(HALFSTEP, PITCH_IN1, PITCH_IN3, PITCH_IN2, PITCH_IN4);
+	pitch_stepper.setMaxSpeed(PITCH_MAX_SPEED);
+	pitch_stepper.setAcceleration(PITCH_ACCELERATION);
+	pitch_stepper.setSpeed(PITCH_SPEED);
+
+	pinMode(GUN_PIN, OUTPUT);
+	analogWrite(GUN_PIN, 255);
 }
 
 static void move(AccelStepper* s, int b)
@@ -66,4 +74,10 @@ void Controller::pitchDown(int b)
 void Controller::pitchTo(int b)
 {
 	moveTo(&pitch_stepper, b);
+}
+
+void Controller::shoot(){
+	analogWrite(GUN_PIN, 0);
+	delay(500);
+	analogWrite(GUN_PIN, 255);
 }

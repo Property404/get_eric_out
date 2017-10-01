@@ -8,6 +8,8 @@ public:
 	static const int PITCH_SPEED = YAW_SPEED;
 	static const int PITCH_ACCELERATION = YAW_ACCELERATION;
 	static const int PITCH_MAX_SPEED = YAW_MAX_SPEED;
+
+	static const int GUN_PIN = 11;
 private:
 	// The association between the pins on the Arduino and on the Stepper driver
 	static const int YAW_IN1 = 3;
@@ -40,5 +42,7 @@ public:
 	void pitchDown(int);
 	// Move to a particular spot
 	void pitchTo(int);
+
+	void shoot();
 };
 #endif
