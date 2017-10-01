@@ -21,3 +21,5 @@ def pitchUp(value):
 	_ser.write(_make_command("pu", value));
 def pitchDown(value):
 	_ser.write(_make_command("pd", value));
+def shoot()
+	_ser.write("s")
